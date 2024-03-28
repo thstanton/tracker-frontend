@@ -12,7 +12,7 @@ export default function LinkCard({ link }: LinkCardProps) {
     <div key={link.id} className="card card-bordered border-neutral mb-3">
       <div className="card-body text-neutral">
         <div className="flex justify-between">
-          <h2 className="text-xl font-zen font-semibold">{link.name}</h2>
+          <h2 className="text-xl font-zen font-medium">{link.name}</h2>
           <LinkMenu link={link} />
         </div>
         <p className="text-sm font-semibold">

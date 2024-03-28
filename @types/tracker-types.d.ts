@@ -4,7 +4,13 @@ export type Click = {
     ipAddress: string;
     identifier: Identifier;
     destination: Destination;
+    destinationId: number;
 };
+
+export type ChartData = {
+    date: Date;
+    clicks: number;
+}
 
 export type Destination = {
     id: number;
@@ -23,6 +29,10 @@ export type DestinationCreate = {
     url: string;
     name: string;
     slug: string;
+}
+
+export type DestinationUpdate = DestinationCreate & {
+    id: string; 
 }
 
 export type Identifier = {

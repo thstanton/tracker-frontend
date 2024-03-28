@@ -1,6 +1,7 @@
 "use server";
-import { createLink } from "@/lib/api/api.service";
+import { createLink, updateLink } from "@/lib/api/api.service";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 export async function handleCreateLink(formData: FormData) {
   const name = formData.get("name")?.toString();
@@ -12,5 +13,20 @@ export async function handleCreateLink(formData: FormData) {
   const newLink = await createLink({ name, url, slug });
   if (newLink) {
     revalidatePath("/");
+  }
+}
+
+export async function handleUpdateLink(formData: FormData) {
+  const id = formData.get("id")?.toString();
+  const name = formData.get("name")?.toString();
+  const url = formData.get("url")?.toString();
+  const slug = formData.get("slug")?.toString();
+
+  if (!id || !name || !url || !slug) {
+    throw new Error("Name, URL, and slug are required");
+  }
+  const newLink = await updateLink({ id, name, url, slug });
+  if (newLink) {
+    redirect("/links");
   }
 }

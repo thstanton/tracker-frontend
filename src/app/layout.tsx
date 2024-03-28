@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Zen_Kaku_Gothic_New } from "next/font/google";
 import "./globals.css";
-import SessionProvider from "./SessionProvider";
 import NavBar from "@/components/NavBar/NavBar";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -27,7 +26,9 @@ export default function RootLayout({
         className={`${inter.className} min-h-screen bg-gradient-to-t from-stone-300 to-stone-50 bg-cover bg-fixed bg-center`}
       >
         <NavBar />
-        <SessionProvider>{children}</SessionProvider>
+          <main className="flex h-full flex-col items-center justify-center">
+            {children}
+          </main>
       </body>
     </html>
   );

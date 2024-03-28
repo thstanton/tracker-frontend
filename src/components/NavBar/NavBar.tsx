@@ -1,5 +1,6 @@
 import { isAuthenticated } from "@/lib/auth/auth.service";
 import Link from "next/link";
+import LogOutButton from "./LogOutButton";
 
 export default function NavBar() {
   return (
@@ -14,7 +15,7 @@ export default function NavBar() {
             <Link href={"/clicks"}>CLICKS</Link>
           </li>
         </ul>
-        {isAuthenticated() && <button className="btn btn-outline font-zen">LOG OUT</button>}
+        {isAuthenticated() && <LogOutButton />}
       </div>
     </div>
   );

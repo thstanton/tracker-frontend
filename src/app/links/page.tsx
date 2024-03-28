@@ -1,7 +1,15 @@
-import React from 'react'
+import LinkForm from "@/components/CreateLink/LinkForm";
+import LinkCard from "@/components/LinkCard/LinkCard";
+import { fetchLinks } from "@/lib/api/api.service";
 
-export default function page() {
+export default async function page() {
+    const links = await fetchLinks();
   return (
-    <div>page</div>
+    <div className="flex flex-col gap-2">
+        <LinkForm />
+        {links?.map((link) => (
+          <LinkCard key={link.id} link={link} />
+        ))}
+    </div>
   )
 }

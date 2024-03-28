@@ -12,10 +12,10 @@ export default function LoginForm() {
     return login(username, password);
   }
   return (
-    <div className="card glass card-bordered w-2/3">
+    <div className="card card-bordered border-neutral w-2/3">
       <div className="card-body">
         <div className="card-title mb-3 justify-center">
-          <h2 className="text-4xl text-blue-950">Tracker</h2>
+          <h2 className="text-4xl text-blue-950 font-zen font-light">WELCOME</h2>
         </div>
         <form action={handleSubmit} className="flex flex-col justify-center">
           <input
@@ -26,13 +26,13 @@ export default function LoginForm() {
             required
           />
           <input
-            type="text"
+            type="password"
             className="input input-bordered mb-3 w-full"
             placeholder="Password"
             name="password"
             required
           />
-          <SubmitButton className="btn btn-primary">Login</SubmitButton>
+          <SubmitButton className="btn btn-outline">Login</SubmitButton>
         </form>
       </div>
     </div>

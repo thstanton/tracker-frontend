@@ -23,7 +23,7 @@ export default function ClickChart({ chartData }: ClickChartProps) {
   return (
     <div>
       <select
-        className="select select-bordered max-w-xs mb-3"
+        className="select select-bordered mb-3 max-w-xs"
         onChange={(e) =>
           setFilteredData(chartData?.slice(0, parseInt(e.target.value)) || [])
         }

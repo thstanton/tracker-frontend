@@ -1,6 +1,6 @@
 "use client";
 import { IoMenu, IoPencilOutline, IoTrash } from "react-icons/io5";
-import { Destination } from "../../../@types/tracker-types";
+import { Destination } from "../../../../@types/tracker-types";
 import { handleDeleteLink } from "./actions";
 import { redirect } from "next/navigation";
 import Link from "next/link";

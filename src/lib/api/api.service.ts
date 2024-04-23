@@ -22,7 +22,8 @@ export async function fetchLinks(): Promise<Destination[] | undefined> {
     if (response.ok) {
       return await response.json();
     } else {
-      throw new Error(response.statusText);
+      console.log(response)
+      throw new Error("Error");
     }
   } catch (error) {
     console.error(error);

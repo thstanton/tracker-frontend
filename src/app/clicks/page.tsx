@@ -1,11 +1,10 @@
-import ClickChart from "@/components/ClickChart/ClickChart";
-import ClickTable from "@/components/ClickTable/ClickTable";
 import {
   fetchChartData,
   fetchClicks,
   fetchIdentifiers,
   fetchLinks,
 } from "@/lib/api/api.service";
+import ClickAnalytics from "./ClickAnalytics";
 
 interface ClickPageProps {
   searchParams: {
@@ -21,10 +20,11 @@ export default async function page({ searchParams }: ClickPageProps) {
   const identifiers = await fetchIdentifiers();
 
   return (
-    <div>
-      <ClickChart chartData={chartData} />
-      <div className="divider"></div>
-      <ClickTable clicks={clicks} links={links} identifiers={identifiers} />
-    </div>
+    <ClickAnalytics
+      clicks={clicks}
+      links={links}
+      identifiers={identifiers}
+      chartData={chartData}
+    />
   );
 }

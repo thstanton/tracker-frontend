@@ -1,55 +1,14 @@
 "use client";
 import Link from "next/link";
-import { Click, Destination, Identifier } from "../../../@types/tracker-types";
-import { useState } from "react";
+import { Click } from "../../../@types/tracker-types";
 
 interface ClickTableProps {
   clicks: Click[] | undefined;
-  links: Destination[] | undefined;
-  identifiers: Identifier[] | undefined;
 }
 
-export default function ClickTable({
-  clicks,
-  links,
-  identifiers,
-}: ClickTableProps) {
-  const [filteredClicks, setFilteredClicks] = useState<Click[] | undefined>(
-    clicks,
-  );
-
-  function handleFilter(e: React.ChangeEvent<HTMLSelectElement>) {
-    const value = e.target.value;
-    if (value === "all") {
-      setFilteredClicks(clicks);
-    } else {
-      const filtered = clicks?.filter((click) => click.destinationId === parseInt(value));
-      setFilteredClicks(filtered);
-    }
-  }
-
+export default function ClickTable({ clicks }: ClickTableProps) {
   return (
-    <div>
-      <div className="flex justify-evenly items-center">
-        <label className="text-sm">Filter link:</label>
-        <select className="select select-bordered select-sm" onChange={handleFilter}>
-          <option value="all">All</option>
-          {links?.map((link) => (
-            <option key={link.id} value={link.id}>
-              {link.name}
-            </option>
-          ))}
-        </select>
-        <label className="text-sm">Filter identifier:</label>
-        <select className="select select-bordered select-sm" onChange={handleFilter}>
-          <option value="all">All</option>
-          {identifiers?.map((identifier) => (
-            <option key={identifier.id} value={identifier.id}>
-              {identifier.name}
-            </option>
-          ))}
-        </select>
-      </div>
+    <div className="mb-10">
       <table className="table table-lg w-full">
         <thead className="">
           <tr className="border-none">
@@ -67,7 +26,7 @@ export default function ClickTable({
           </tr>
         </thead>
         <tbody className="border-neutral">
-          {filteredClicks?.map((click) => (
+          {clicks?.map((click) => (
             <tr key={click.id} className="border-stone-400 text-neutral">
               <td className="text-sm">
                 {new Date(click.createdAt).toLocaleString()}

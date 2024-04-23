@@ -3,6 +3,7 @@ export type Click = {
     createdAt: Date;
     ipAddress: string;
     identifier: Identifier;
+    identifierId: number;
     destination: Destination;
     destinationId: number;
 };

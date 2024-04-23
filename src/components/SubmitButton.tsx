@@ -7,7 +7,8 @@ interface SubmitButtonProps {
 }
 
 export default function SubmitButton({
-  children, className
+  children,
+  className,
 }: SubmitButtonProps) {
   const { pending } = useFormStatus();
   return (

@@ -1,6 +1,45 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
+export async function register(
+  username: string,
+  email: string,
+  password: string,
+) {
+  "use server";
+  try {
+    const response = await fetch(`${process.env.API_URL}/auth/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, email, password }),
+    });
+    if (response.ok) {
+      const { access_token, userId } = await response.json();
+      cookies().set({
+        name: "token",
+        value: access_token,
+        httpOnly: true,
+        expires: new Date(Date.now() + 60 * 60 * 24 * 30),
+      });
+    } else {
+      const error = await response.json();
+      console.log(error);
+      return {
+        message:
+          error.statusCode === 409
+            ? "A user with this email address already exists"
+            : "Something went wrong",
+      };
+    }
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+  redirect("/links");
+}
+
 export async function login(username: string, password: string) {
   "use server";
   try {
@@ -20,11 +59,17 @@ export async function login(username: string, password: string) {
         expires: new Date(Date.now() + 60 * 60 * 24 * 30),
       });
     } else {
-      throw new Error(response.statusText);
+      const error = await response.json();
+      console.log(error);
+      return {
+        message: "Invalid username or password",
+      };
     }
   } catch (error) {
     console.error(error);
-    throw error;
+    return {
+      message: "Something went wrong",
+    };
   }
   redirect("/links");
 }

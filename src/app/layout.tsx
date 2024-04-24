@@ -11,7 +11,7 @@ const zen = Zen_Kaku_Gothic_New({
 });
 
 export const metadata: Metadata = {
-  title: "Tracker",
+  title: "Cliki",
   description: "Simple Tracking Link Generator",
 };
 
@@ -26,9 +26,9 @@ export default function RootLayout({
         className={`${inter.className} min-h-screen bg-gradient-to-t from-stone-300 to-stone-50 bg-cover bg-fixed bg-center`}
       >
         <NavBar />
-          <main className="flex h-full flex-col items-center justify-center">
-            {children}
-          </main>
+        <main className="flex h-full flex-col items-center justify-center">
+          {children}
+        </main>
       </body>
     </html>
   );

@@ -16,7 +16,7 @@ export default function LinkCard({ link }: LinkCardProps) {
           <LinkMenu link={link} />
         </div>
         <p className="text-sm font-semibold">
-          localhost:3000/link/{link.userId}/{link.slug}
+          cliki.up.railway.app/link/{link.userId}/{link.slug}
         </p>
         <Link href={link.url} className="text-sm">
           {link.url}

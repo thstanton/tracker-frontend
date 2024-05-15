@@ -52,12 +52,7 @@ export async function login(username: string, password: string) {
     });
     if (response.ok) {
       const { access_token } = await response.json();
-      cookies().set({
-        name: "token",
-        value: access_token,
-        httpOnly: true,
-        expires: new Date(Date.now() + 60 * 60 * 24 * 30),
-      });
+      storeToken(access_token);
     } else {
       const error = await response.json();
       console.log(error);
@@ -72,6 +67,16 @@ export async function login(username: string, password: string) {
     };
   }
   redirect("/links");
+}
+
+export async function storeToken(token: string) {
+  "use server";
+  cookies().set({
+    name: "token",
+    value: token,
+    httpOnly: true,
+    expires: new Date(Date.now() + 60 * 60 * 24 * 30),
+  });
 }
 
 export async function logout() {

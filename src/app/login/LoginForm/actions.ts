@@ -3,8 +3,8 @@ import { login } from "@/lib/auth/auth.service";
 import { z } from "zod";
 
 const schema = z.object({
-  username: z.string({
-    required_error: "Username is required",
+  email: z.string({
+    required_error: "Email is required",
   }),
   password: z.string({
     required_error: "Password is required",
@@ -14,7 +14,7 @@ const schema = z.object({
 export async function handleSubmit(prevState: any, formData: FormData) {
   "use server";
   const result = schema.safeParse({
-    username: formData.get("username"),
+    email: formData.get("email"),
     password: formData.get("password"),
   });
   if (!result.success) {
@@ -22,6 +22,6 @@ export async function handleSubmit(prevState: any, formData: FormData) {
       message: result.error.errors.map((error) => error.message).join(", "),
     };
   }
-  const { username, password } = result.data;
-  return login(username, password);
+  const { email, password } = result.data;
+  return login(email, password);
 }

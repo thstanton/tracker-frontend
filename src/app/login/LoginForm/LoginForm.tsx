@@ -20,8 +20,8 @@ export default function LoginForm() {
           <input
             type="text"
             className="input input-bordered mb-3 w-full"
-            placeholder="Username"
-            name="username"
+            placeholder="Email Address"
+            name="email"
             required
           />
           <input

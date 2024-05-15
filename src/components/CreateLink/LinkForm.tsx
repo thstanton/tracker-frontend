@@ -13,7 +13,7 @@ export default function LinkForm({ link }: LinkFormProps) {
   return (
     <div className="card card-bordered mb-3 border-neutral text-neutral">
       <div className="card-body">
-        <h2 className="font-zen card-title font-medium">
+        <h2 className="card-title font-zen font-medium">
           {link ? "Update Link" : "Create Link"}
         </h2>
         <form
@@ -45,13 +45,16 @@ export default function LinkForm({ link }: LinkFormProps) {
             name="url"
             defaultValue={link?.url}
           />
-          <input
-            type="text"
-            placeholder="Slug"
-            className="input input-bordered input-ghost mb-3 w-full border-stone-400 bg-stone-200"
-            name="slug"
-            defaultValue={link?.slug}
-          />
+          {link && (
+            <input
+              type="text"
+              placeholder="Slug"
+              className="input input-bordered input-ghost mb-3 w-full border-stone-400 bg-stone-200"
+              name="slug"
+              defaultValue={link?.slug}
+              disabled
+            />
+          )}
           <div className="card-actions justify-end">
             <SubmitButton className="btn btn-outline">
               {link ? "Update" : "Create"}

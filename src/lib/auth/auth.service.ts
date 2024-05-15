@@ -51,7 +51,7 @@ export async function login(username: string, password: string) {
       body: JSON.stringify({ username, password }),
     });
     if (response.ok) {
-      const { access_token, userId } = await response.json();
+      const { access_token } = await response.json();
       cookies().set({
         name: "token",
         value: access_token,

@@ -6,11 +6,10 @@ import { redirect } from "next/navigation";
 export async function handleCreateLink(formData: FormData) {
   const name = formData.get("name")?.toString();
   const url = formData.get("url")?.toString();
-  const slug = formData.get("slug")?.toString();
-  if (!name || !url || !slug) {
+  if (!name || !url) {
     throw new Error("Name, URL, and slug are required");
   }
-  const newLink = await createLink({ name, url, slug });
+  const newLink = await createLink({ name, url });
   if (newLink) {
     revalidatePath("/");
   }
@@ -20,12 +19,11 @@ export async function handleUpdateLink(formData: FormData) {
   const id = formData.get("id")?.toString();
   const name = formData.get("name")?.toString();
   const url = formData.get("url")?.toString();
-  const slug = formData.get("slug")?.toString();
 
-  if (!id || !name || !url || !slug) {
+  if (!id || !name || !url) {
     throw new Error("Name, URL, and slug are required");
   }
-  const newLink = await updateLink({ id, name, url, slug });
+  const newLink = await updateLink({ id, name, url });
   if (newLink) {
     redirect("/links");
   }

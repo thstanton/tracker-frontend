@@ -22,7 +22,7 @@ export async function fetchLinks(): Promise<Destination[] | undefined> {
     if (response.ok) {
       return await response.json();
     } else {
-      console.log(response)
+      console.log(response);
       throw new Error("Error");
     }
   } catch (error) {
@@ -54,7 +54,6 @@ export async function fetchLink(id: number): Promise<Destination | undefined> {
 export async function createLink({
   name,
   url,
-  slug,
 }: DestinationCreate): Promise<Destination | undefined> {
   try {
     const response = await fetch(`${process.env.API_URL}/destinations`, {
@@ -63,7 +62,7 @@ export async function createLink({
         "Content-Type": "application/json",
         Authorization: `Bearer ${getToken()}`,
       },
-      body: JSON.stringify({ name, url, slug }),
+      body: JSON.stringify({ name, url }),
     });
     if (response.ok) {
       return await response.json();
@@ -98,7 +97,6 @@ export async function updateLink({
   id,
   name,
   url,
-  slug,
 }: DestinationUpdate): Promise<Destination | undefined> {
   try {
     const response = await fetch(`${process.env.API_URL}/destinations/${id}`, {
@@ -107,7 +105,7 @@ export async function updateLink({
         "Content-Type": "application/json",
         Authorization: `Bearer ${getToken()}`,
       },
-      body: JSON.stringify({ name, url, slug }),
+      body: JSON.stringify({ name, url }),
     });
 
     if (response.ok) {

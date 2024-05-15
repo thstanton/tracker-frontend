@@ -8,14 +8,14 @@ interface CopyLinkProps {
   userId: number;
 }
 
-export default function CopyLink({ slug, userId }: CopyLinkProps) {
+export default function CopyLink({ slug }: CopyLinkProps) {
   const [identifier, setIdentifier] = useState("");
   const [copySuccess, setCopySuccess] = useState(false);
   async function handleCopy() {
     await navigator.clipboard.writeText(
       identifier.length
-        ? `${process.env.NEXT_PUBLIC_LINK_URL}/${userId}/${slug}/?id=${identifier}`
-        : `${process.env.NEXT_PUBLIC_LINK_URL}/${userId}/${slug}`,
+        ? `${process.env.NEXT_PUBLIC_LINK_URL}/${slug}/?id=${identifier}`
+        : `${process.env.NEXT_PUBLIC_LINK_URL}/${slug}`,
     );
     setCopySuccess(true);
     setTimeout(() => setCopySuccess(false), 2000);

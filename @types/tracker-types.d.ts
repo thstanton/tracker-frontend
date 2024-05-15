@@ -1,52 +1,50 @@
 export type Click = {
-    id: number;
-    createdAt: Date;
-    ipAddress: string;
-    identifier: Identifier;
-    identifierId: number;
-    destination: Destination;
-    destinationId: number;
+  id: number;
+  createdAt: Date;
+  ipAddress: string;
+  identifier: Identifier;
+  identifierId: number;
+  destination: Destination;
+  destinationId: number;
 };
 
 export type ChartData = {
-    date: Date;
-    clicks: number;
-}
+  date: Date;
+  clicks: number;
+};
 
 export type Destination = {
-    id: number;
-    url: string;
-    name: string;
-    slug: string;
-    owner: User;
-    userId: number;
-    clicks: Click[];
-    _count?: {
-        clicks: number;
-    }
+  id: number;
+  url: string;
+  name: string;
+  slug: string;
+  owner: User;
+  userId: number;
+  clicks: Click[];
+  _count?: {
+    clicks: number;
+  };
 };
 
 export type DestinationCreate = {
-    url: string;
-    name: string;
-    slug: string;
-}
+  url: string;
+  name: string;
+};
 
 export type DestinationUpdate = DestinationCreate & {
-    id: string; 
-}
+  id: string;
+};
 
 export type Identifier = {
-    id: number;
-    name: string;
-    clicks: Click[];
+  id: number;
+  name: string;
+  clicks: Click[];
 };
-  
+
 export type User = {
-    id: number;
-    username: string;
-    email: string;
-    password: string;
-    destination: Destination[];
+  id: number;
+  username: string;
+  email: string;
+  password: string;
+  destination: Destination[];
 };
-  

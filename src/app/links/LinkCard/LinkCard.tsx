@@ -15,9 +15,7 @@ export default function LinkCard({ link }: LinkCardProps) {
           <h2 className="font-zen text-xl font-medium">{link.name}</h2>
           <LinkMenu link={link} />
         </div>
-        <p className="text-sm font-semibold">
-          cliki.up.railway.app/link/{link.userId}/{link.slug}
-        </p>
+        <p className="text-sm font-semibold">cliki.in/{link.slug}</p>
         <Link href={link.url} className="text-sm">
           {link.url}
         </Link>

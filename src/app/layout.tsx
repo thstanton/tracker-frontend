@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Zen_Kaku_Gothic_New } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/NavBar/NavBar";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const zen = Zen_Kaku_Gothic_New({
@@ -29,6 +30,7 @@ export default function RootLayout({
         <main className="flex h-full flex-col items-center justify-center">
           {children}
         </main>
+        <Footer />
       </body>
     </html>
   );

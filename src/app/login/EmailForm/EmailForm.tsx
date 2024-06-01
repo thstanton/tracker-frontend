@@ -3,9 +3,16 @@ import { useFormState } from "react-dom";
 import SubmitButton from "../../../components/SubmitButton";
 import { handleSubmit } from "./actions";
 
-export default function EmailForm() {
+interface EmailFormProps {
+  error?: string;
+}
+
+export default function EmailForm({ error }: EmailFormProps) {
   const [state, formAction] = useFormState(handleSubmit, {
-    message: "",
+    message:
+      error === "true"
+        ? "Your magic link has expired, please request a new one"
+        : "",
   });
 
   return (

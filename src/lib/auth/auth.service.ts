@@ -71,30 +71,26 @@ export async function login(username: string, password: string) {
 
 export async function validateEmail(destination: string) {
   "use server";
-  try {
-    const response = await fetch(`${process.env.AUTH_URL}/magic-link`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ destination }),
-    });
-    if (response.ok) {
-      console.log(response);
-      const json = await response.json();
-      console.log(json);
-      return;
-    } else {
-      const error = await response.json();
-      console.log(error);
-      return {
-        message: "Invalid username or password",
-      };
-    }
-  } catch (error) {
-    console.error(error);
+  const response = await fetch(`${process.env.AUTH_URL}/magic-link`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ destination }),
+  });
+  const json = await response.json();
+  if (response.status === 201) {
+    redirect("/login/check-email");
+  } else if (response.status === 401) {
+    redirect("/register");
+  } else if (response.status === 400) {
     return {
-      message: "Something went wrong",
+      message: "Invalid email address",
+    };
+  } else {
+    console.log(json);
+    return {
+      message: "Something went wrong 1",
     };
   }
 }

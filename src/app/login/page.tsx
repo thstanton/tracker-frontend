@@ -1,9 +1,15 @@
 import EmailForm from "./EmailForm/EmailForm";
 
-export default function page() {
+interface LoginPageProps {
+  searchParams?: {
+    error?: string;
+  };
+}
+
+export default function page({ searchParams }: LoginPageProps) {
   return (
     <>
-      <EmailForm />
+      <EmailForm error={searchParams?.error} />
     </>
   );
 }

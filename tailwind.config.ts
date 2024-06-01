@@ -21,10 +21,10 @@ const config: Config = {
         trackerTheme: {
           ...require("daisyui/src/theming/themes")["light"],
           "base-100": "#d6d3d1",
-          "neutral": "#44403c"
-        }
-      }
-    ]
-  }
+          neutral: "#44403c",
+        },
+      },
+    ],
+  },
 };
 export default config;

@@ -69,6 +69,36 @@ export async function login(username: string, password: string) {
   redirect("/links");
 }
 
+export async function validateEmail(destination: string) {
+  "use server";
+  try {
+    const response = await fetch(`${process.env.AUTH_URL}/magic-link`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ destination }),
+    });
+    if (response.ok) {
+      console.log(response);
+      const json = await response.json();
+      console.log(json);
+      return;
+    } else {
+      const error = await response.json();
+      console.log(error);
+      return {
+        message: "Invalid username or password",
+      };
+    }
+  } catch (error) {
+    console.error(error);
+    return {
+      message: "Something went wrong",
+    };
+  }
+}
+
 export async function storeToken(token: string) {
   "use server";
   cookies().set({

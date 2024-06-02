@@ -4,11 +4,6 @@ import { register } from "@/lib/auth/auth.service";
 import { z } from "zod";
 
 const schema = z.object({
-  username: z
-    .string({
-      required_error: "Username is required",
-    })
-    .min(1),
   email: z
     .string({
       required_error: "Email is required",
@@ -31,7 +26,6 @@ const schema = z.object({
 export async function handleSubmit(prevState: any, formData: FormData) {
   "use server";
   const result = schema.safeParse({
-    username: formData.get("username"),
     email: formData.get("email"),
     password: formData.get("password"),
     confirmPassword: formData.get("confirmPassword"),
@@ -49,7 +43,7 @@ export async function handleSubmit(prevState: any, formData: FormData) {
     };
   }
 
-  const { username, email, password } = result.data;
+  const { email, password } = result.data;
 
-  return register(username, email, password);
+  return register(email, password);
 }

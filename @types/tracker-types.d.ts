@@ -6,6 +6,7 @@ export type Click = {
   identifierId: number;
   destination: Destination;
   destinationId: number;
+  isRead: boolean;
 };
 
 export type ChartData = {
@@ -43,8 +44,7 @@ export type Identifier = {
 
 export type User = {
   id: number;
-  username: string;
   email: string;
-  password: string;
+  password?: string;
   destination: Destination[];
 };

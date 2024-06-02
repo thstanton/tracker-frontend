@@ -2,6 +2,8 @@
 import { useFormState } from "react-dom";
 import SubmitButton from "../../../components/SubmitButton";
 import { handleSubmit } from "./actions";
+import { IoMailOutline } from "react-icons/io5";
+import Link from "next/link";
 
 interface EmailFormProps {
   error?: string;
@@ -34,8 +36,14 @@ export default function EmailForm({ error }: EmailFormProps) {
             name="email"
             required
           />
-          <SubmitButton className="btn btn-outline">Next</SubmitButton>
+          <SubmitButton className="btn btn-outline">
+            <IoMailOutline />
+            Send Magic Link
+          </SubmitButton>
           <p className="mt-3 text-sm text-red-500">{state?.message}</p>
+          <p className="text-center text-sm">
+            <Link href={"/login/password"}>Log in with password instead</Link>
+          </p>
         </form>
       </div>
     </div>

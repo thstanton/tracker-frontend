@@ -12,18 +12,16 @@ export default function RegistrationForm() {
   return (
     <div className="card card-bordered w-2/3 border-neutral">
       <div className="card-body">
-        <div className="card-title mb-3 justify-center">
+        <div className="card-title mb-3 flex-col justify-center">
           <h2 className="font-zen text-4xl font-light text-blue-950">
             CREATE ACCOUNT
           </h2>
+          <p className="text-sm">
+            Looks like you don&apos;t have an account with us yet. Please create
+            one here.
+          </p>
         </div>
         <form action={formAction} className="flex flex-col justify-center">
-          <input
-            type="text"
-            className="input input-bordered mb-3 w-full"
-            placeholder="Username"
-            name="username"
-          />
           <input
             className="input input-bordered mb-3 w-full"
             placeholder="Email"

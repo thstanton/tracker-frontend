@@ -2,6 +2,7 @@
 import { useFormState } from "react-dom";
 import SubmitButton from "../../../components/SubmitButton";
 import { handleSubmit } from "./actions";
+import Link from "next/link";
 
 export default function LoginForm() {
   const [state, formAction] = useFormState(handleSubmit, {
@@ -33,6 +34,11 @@ export default function LoginForm() {
           />
           <SubmitButton className="btn btn-outline">Login</SubmitButton>
           <p className="mt-3 text-sm text-red-500">{state.message}</p>
+          <p className="text-center text-sm">
+            <Link href={"/login"}>
+              Forgot password? Log in with magic link instead
+            </Link>
+          </p>
         </form>
       </div>
     </div>

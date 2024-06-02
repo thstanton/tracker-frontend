@@ -1,11 +1,7 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-export async function register(
-  username: string,
-  email: string,
-  password: string,
-) {
+export async function register(email: string, password: string) {
   "use server";
   try {
     const response = await fetch(`${process.env.API_URL}/auth/register`, {
@@ -13,7 +9,7 @@ export async function register(
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username, email, password }),
+      body: JSON.stringify({ email, password }),
     });
     if (response.ok) {
       const { access_token, userId } = await response.json();

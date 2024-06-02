@@ -28,8 +28,11 @@ export default function ClickTable({ clicks }: ClickTableProps) {
         <tbody className="border-neutral">
           {clicks?.map((click) => (
             <tr key={click.id} className="border-stone-400 text-neutral">
-              <td className="text-sm">
-                {new Date(click.createdAt).toLocaleString()}
+              <td className="flex items-center gap-2 text-sm">
+                {!click.isRead && (
+                  <span className="badge badge-warning badge-xs" />
+                )}
+                {new Date(click.createdAt).toLocaleString("en-GB")}
               </td>
               <td className="text-sm">{click.destination.name}</td>
               <td className="text-sm">

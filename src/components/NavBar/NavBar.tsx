@@ -6,7 +6,7 @@ import { getUnreadCount } from "@/lib/api/api.service";
 
 export default async function NavBar() {
   const unreadCount = await getUnreadCount();
-  console.log(unreadCount);
+
   return (
     <div className="navbar mb-3 px-6">
       <div className="navbar-start font-zen text-3xl">
@@ -25,9 +25,9 @@ export default async function NavBar() {
           <li>
             <Link href={"/clicks"}>
               CLICKS{" "}
-              {unreadCount && (
+              {unreadCount ? (
                 <span className="badge badge-neutral">{unreadCount}</span>
-              )}
+              ) : null}
             </Link>
           </li>
         </ul>

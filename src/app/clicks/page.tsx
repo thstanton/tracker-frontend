@@ -3,6 +3,7 @@ import {
   fetchClicks,
   fetchIdentifiers,
   fetchLinks,
+  markAllAsRead,
 } from "@/lib/api/api.service";
 import ClickAnalytics from "./ClickAnalytics";
 
@@ -18,6 +19,7 @@ export default async function page({ searchParams }: ClickPageProps) {
   const chartData = await fetchChartData();
   const links = await fetchLinks();
   const identifiers = await fetchIdentifiers();
+  await markAllAsRead();
 
   return (
     <ClickAnalytics

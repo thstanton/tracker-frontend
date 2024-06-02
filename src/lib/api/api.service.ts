@@ -177,10 +177,29 @@ export async function fetchIdentifiers(): Promise<Identifier[] | undefined> {
 
 export async function getUnreadCount() {
   try {
+    const response = await fetch(`${process.env.API_URL}/clicks/unread`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${getToken()}`,
+      },
+    });
+    if (response.ok) {
+      return await response.json();
+    } else {
+      throw new Error(response.statusText);
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export async function markAllAsRead() {
+  try {
     const response = await fetch(
-      `${process.env.API_URL}/clicks/is-read/count`,
+      `${process.env.API_URL}/clicks/unread/mark-as-read`,
       {
-        method: "GET",
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${getToken()}`,

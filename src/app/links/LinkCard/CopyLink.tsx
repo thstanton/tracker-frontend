@@ -1,16 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import { IoCopyOutline } from "react-icons/io5";
+import { IoCopyOutline, IoQrCodeOutline } from "react-icons/io5";
+import DisplayQRCode from "./DisplayQRCode";
 
 interface CopyLinkProps {
   slug: string;
-  userId: number;
+  name: string;
 }
 
-export default function CopyLink({ slug }: CopyLinkProps) {
+export default function CopyLink({ slug, name }: CopyLinkProps) {
   const [identifier, setIdentifier] = useState("");
   const [copySuccess, setCopySuccess] = useState(false);
+
   async function handleCopy() {
     await navigator.clipboard.writeText(
       identifier.length
@@ -20,6 +22,12 @@ export default function CopyLink({ slug }: CopyLinkProps) {
     setCopySuccess(true);
     setTimeout(() => setCopySuccess(false), 2000);
   }
+
+  function handleModal() {
+    const modal = document.getElementById("qr-code-modal") as HTMLDialogElement;
+    modal?.showModal();
+  }
+
   return (
     <>
       <label className="text-xs" htmlFor="identifier">
@@ -37,10 +45,14 @@ export default function CopyLink({ slug }: CopyLinkProps) {
         <div className="btn btn-outline" onClick={handleCopy}>
           <IoCopyOutline />
         </div>
+        <div className="btn btn-outline" onClick={handleModal}>
+          <IoQrCodeOutline />
+        </div>
       </div>
       <p aria-live="polite" className="text-right text-sm">
         {copySuccess ? "Link copied to clipboard" : ""}
       </p>
+      <DisplayQRCode slug={slug} name={name} />
     </>
   );
 }

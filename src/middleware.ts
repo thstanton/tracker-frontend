@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { isAuthenticated } from "./lib/auth/auth.service";
+import { isAuthenticated } from "./lib/auth/authService";
 
 export async function middleware(request: NextRequest) {
   "use server";

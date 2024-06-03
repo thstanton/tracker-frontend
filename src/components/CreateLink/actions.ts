@@ -1,5 +1,5 @@
 "use server";
-import { createLink, updateLink } from "@/lib/api/api.service";
+import { createLink, updateLink } from "@/lib/api/apiService";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 

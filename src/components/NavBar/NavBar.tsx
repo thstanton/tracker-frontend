@@ -1,11 +1,11 @@
-import { isAuthenticated } from "@/lib/auth/auth.service";
+import { isAuthenticated } from "@/lib/auth/authService";
 import Link from "next/link";
 import LogOutButton from "./LogOutButton";
 import { IoLinkOutline } from "react-icons/io5";
-import { getUnreadCount } from "@/lib/api/api.service";
+import UnreadCount from "./UnreadCount";
 
 export default async function NavBar() {
-  const unreadCount = await getUnreadCount();
+  const loggedIn = isAuthenticated();
 
   return (
     <div className="navbar mb-3 px-6">
@@ -23,15 +23,10 @@ export default async function NavBar() {
             <Link href={"/links"}>LINKS</Link>
           </li>
           <li>
-            <Link href={"/clicks"}>
-              CLICKS{" "}
-              {unreadCount ? (
-                <span className="badge badge-neutral">{unreadCount}</span>
-              ) : null}
-            </Link>
+            <Link href={"/clicks"}>CLICKS {loggedIn && <UnreadCount />}</Link>
           </li>
         </ul>
-        {isAuthenticated() && <LogOutButton />}
+        {loggedIn && <LogOutButton />}
       </div>
     </div>
   );

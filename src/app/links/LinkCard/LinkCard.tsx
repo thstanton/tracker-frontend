@@ -26,7 +26,7 @@ export default function LinkCard({ link }: LinkCardProps) {
           </p>
         </Link>
         <div className="divider"></div>
-        <CopyLink slug={link.slug} userId={link.userId} />
+        <CopyLink slug={link.slug} name={link.name} />
       </div>
     </div>
   );

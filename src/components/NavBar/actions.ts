@@ -1,7 +1,7 @@
 "use server";
 
-import { logout } from "@/lib/auth/auth.service";
+import { logout } from "@/lib/auth/authService";
 
 export async function handleLogout() {
-    return logout();
-  }
+  return logout();
+}

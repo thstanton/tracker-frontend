@@ -1,6 +1,6 @@
 import LinkForm from "@/components/CreateLink/LinkForm";
 import LinkCard from "@/app/links/LinkCard/LinkCard";
-import { fetchLinks } from "@/lib/api/api.service";
+import { fetchLinks } from "@/lib/api/apiService";
 
 export default async function page() {
   const links = await fetchLinks();

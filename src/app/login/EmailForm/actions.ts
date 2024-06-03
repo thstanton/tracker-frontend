@@ -1,5 +1,5 @@
 "use server";
-import { validateEmail } from "@/lib/auth/auth.service";
+import { validateEmail } from "@/lib/auth/authService";
 import { z } from "zod";
 
 const schema = z.object({

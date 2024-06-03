@@ -24,10 +24,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} min-h-screen bg-gradient-to-t from-stone-300 to-stone-50 bg-cover bg-fixed bg-center`}
+        className={`${inter.className} max-h-content flex min-h-screen flex-col bg-gradient-to-t from-stone-300 to-stone-50 bg-cover bg-fixed bg-center`}
       >
         <NavBar />
-        <main className="flex h-full flex-col items-center justify-center">
+        <main className="flex grow flex-col items-center justify-center">
           {children}
         </main>
         <Footer />

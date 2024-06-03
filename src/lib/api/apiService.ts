@@ -7,7 +7,7 @@ import {
   DestinationUpdate,
   Identifier,
 } from "../../../@types/tracker-types";
-import { getToken } from "../auth/auth.service";
+import { getToken } from "../auth/authService";
 
 export async function fetchLinks(): Promise<Destination[] | undefined> {
   try {

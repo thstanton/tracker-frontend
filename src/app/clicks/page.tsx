@@ -4,7 +4,7 @@ import {
   fetchIdentifiers,
   fetchLinks,
   markAllAsRead,
-} from "@/lib/api/api.service";
+} from "@/lib/api/apiService";
 import ClickAnalytics from "./ClickAnalytics";
 
 interface ClickPageProps {

@@ -1,6 +1,6 @@
 "use server";
 
-import { register } from "@/lib/auth/auth.service";
+import { register } from "@/lib/auth/authService";
 import { z } from "zod";
 
 const schema = z.object({

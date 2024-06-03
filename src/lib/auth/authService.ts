@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 export async function register(email: string, password: string) {
   "use server";
   try {
-    const response = await fetch(`${process.env.API_URL}/auth/register`, {
+    const response = await fetch(`${process.env.AUTH_URL}/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -39,7 +39,7 @@ export async function register(email: string, password: string) {
 export async function login(username: string, password: string) {
   "use server";
   try {
-    const response = await fetch(`${process.env.API_URL}/auth/login`, {
+    const response = await fetch(`${process.env.AUTH_URL}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

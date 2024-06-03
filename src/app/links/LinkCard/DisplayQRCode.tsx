@@ -17,7 +17,7 @@ export default function DisplayQRCode({ slug, name }: DisplayQRCodeProps) {
           fgColor="#1c1917"
           size={250}
           imageSettings={{
-            src: "http://localhost:4000/cliki-icon.svg",
+            src: `${process.env.NEXT_PUBLIC_ADMIN_URL}/cliki-icon.svg`,
             height: 80,
             width: 80,
             excavate: true,

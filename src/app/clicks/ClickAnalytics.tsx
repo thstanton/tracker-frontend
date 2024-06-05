@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import {
   ChartData,
   Click,
@@ -22,11 +22,17 @@ export default function ClickAnalytics({
   identifiers,
   chartData,
 }: ClickAnalyticsProps) {
-  const [filteredClicks, setFilteredClicks] = useState<Click[] | undefined>(
-    clicks,
-  );
   const [linkFilter, setLinkFilter] = useState(0);
   const [identifierFilter, setIdentifierFilter] = useState(0);
+  const filteredClicks = useMemo(
+    () =>
+      clicks?.filter(
+        (click) =>
+          (linkFilter === click.destinationId || linkFilter === 0) &&
+          (identifierFilter === click.identifierId || identifierFilter === 0),
+      ),
+    [clicks, linkFilter, identifierFilter],
+  );
 
   function handleLinkFilter(e: React.ChangeEvent<HTMLSelectElement>) {
     setLinkFilter(parseInt(e.target.value));
@@ -34,18 +40,6 @@ export default function ClickAnalytics({
   function handleIdentifierFilter(e: React.ChangeEvent<HTMLSelectElement>) {
     setIdentifierFilter(parseInt(e.target.value));
   }
-
-  useEffect(() => {
-    function handleFilter() {
-      const newFilteredClicks = clicks?.filter(
-        (click) =>
-          (linkFilter === click.destinationId || linkFilter === 0) &&
-          (identifierFilter === click.identifierId || identifierFilter === 0),
-      );
-      setFilteredClicks(newFilteredClicks);
-    }
-    handleFilter();
-  }, [linkFilter, identifierFilter, clicks]);
 
   return (
     <div>

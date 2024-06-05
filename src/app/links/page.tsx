@@ -1,4 +1,4 @@
-import LinkForm from "@/components/CreateLink/LinkForm";
+import LinkForm from "@/app/links/LinkCard/CreateLink/LinkForm";
 import LinkCard from "@/app/links/LinkCard/LinkCard";
 import { fetchLinks } from "@/lib/api/apiService";
 

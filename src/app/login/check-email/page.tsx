@@ -1,8 +1,9 @@
+import Card from "@/components/Card";
 import { MdMarkEmailUnread } from "react-icons/md";
 
 export default function page() {
   return (
-    <div className="card card-bordered w-2/3 border-neutral">
+    <Card>
       <div className="card-body">
         <div className="card-title mb-3 justify-center">
           <h2 className="font-zen text-4xl font-light text-blue-950">
@@ -14,6 +15,6 @@ export default function page() {
           click on the link to login.
         </p>
       </div>
-    </div>
+    </Card>
   );
 }

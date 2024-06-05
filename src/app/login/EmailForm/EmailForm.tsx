@@ -4,6 +4,7 @@ import SubmitButton from "../../../components/SubmitButton";
 import { handleSubmit } from "./actions";
 import { IoMailOutline } from "react-icons/io5";
 import Link from "next/link";
+import Card from "@/components/Card";
 
 interface EmailFormProps {
   error?: string;
@@ -18,13 +19,13 @@ export default function EmailForm({ error }: EmailFormProps) {
   });
 
   return (
-    <div className="card card-bordered w-2/3 border-neutral">
+    <Card>
       <div className="card-body">
         <div className="card-title mb-3 flex-col justify-center">
           <h2 className="font-zen text-4xl font-light text-blue-950">
             WELCOME
           </h2>
-          <p className="text-sm">
+          <p className="text-center font-sans text-sm font-normal">
             Please enter your email address to get started
           </p>
         </div>
@@ -46,6 +47,6 @@ export default function EmailForm({ error }: EmailFormProps) {
           </p>
         </form>
       </div>
-    </div>
+    </Card>
   );
 }

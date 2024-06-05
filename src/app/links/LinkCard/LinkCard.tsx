@@ -3,6 +3,7 @@ import { Destination } from "../../../../@types/tracker-types";
 import LinkMenu from "./LinkMenu";
 import DisplayQRCode from "./DisplayQRCode";
 import LinkActions from "./LinkActions";
+import Card from "@/components/Card";
 
 interface LinkCardProps {
   link: Destination;
@@ -11,7 +12,7 @@ interface LinkCardProps {
 export default function LinkCard({ link }: LinkCardProps) {
   return (
     <>
-      <div key={link.id} className="card card-bordered mb-3 border-neutral">
+      <Card key={link.id}>
         <div className="card-body text-neutral">
           <div className="flex justify-between">
             <h2 className="font-zen text-xl font-medium">{link.name}</h2>
@@ -30,8 +31,7 @@ export default function LinkCard({ link }: LinkCardProps) {
           <div className="divider"></div>
           <LinkActions slug={link.slug} name={link.name} />
         </div>
-      </div>
-      <DisplayQRCode slug={link.slug} name={link.name} key={link.id} />
+      </Card>
     </>
   );
 }

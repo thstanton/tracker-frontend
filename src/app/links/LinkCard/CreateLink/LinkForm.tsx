@@ -1,7 +1,7 @@
 "use client";
 import { useRef } from "react";
-import { Destination } from "../../../@types/tracker-types";
-import SubmitButton from "../SubmitButton";
+import { Destination } from "../../../../../@types/tracker-types";
+import SubmitButton from "../../../../components/SubmitButton";
 import { handleCreateLink, handleUpdateLink } from "./actions";
 
 interface LinkFormProps {

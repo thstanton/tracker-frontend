@@ -1,4 +1,4 @@
-import LinkForm from "@/components/CreateLink/LinkForm";
+import LinkForm from "@/app/links/LinkCard/CreateLink/LinkForm";
 import { fetchLink } from "@/lib/api/apiService";
 
 interface EditLinkPageProps {

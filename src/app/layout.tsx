@@ -27,7 +27,7 @@ export default function RootLayout({
         className={`${inter.className} max-h-content flex min-h-screen flex-col bg-gradient-to-t from-stone-300 to-stone-50 bg-cover bg-fixed bg-center`}
       >
         <NavBar />
-        <main className="flex grow flex-col items-center justify-center">
+        <main className="flex grow flex-col items-center justify-center px-4">
           {children}
         </main>
         <Footer />

@@ -54,7 +54,7 @@ export default function LinkActions({ slug, name }: LinkActionsProps) {
       <p aria-live="polite" className="text-right text-sm">
         {copySuccess ? "Link copied to clipboard" : ""}
       </p>
-      <DisplayQRCode slug={slug} name={name} />
+      <DisplayQRCode slug={slug} name={name} identifier={identifier} />
     </>
   );
 }

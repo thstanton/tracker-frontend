@@ -3,6 +3,8 @@ import { createLink, updateLink } from "@/lib/api/apiService";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
+// ! TODO Add Zod validation and error handling
+
 export async function handleCreateLink(formData: FormData) {
   const name = formData.get("name")?.toString();
   const url = formData.get("url")?.toString();

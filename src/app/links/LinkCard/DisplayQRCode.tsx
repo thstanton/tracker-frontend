@@ -8,8 +8,8 @@ interface DisplayQRCodeProps {
 
 export default function DisplayQRCode({ slug, name }: DisplayQRCodeProps) {
   return (
-    <dialog id="qr-code-modal" className="modal">
-      <div className="modal-box flex min-h-96 flex-col items-center justify-center gap-2 text-stone-800">
+    <dialog id={`qr-code-modal-${slug}`} className="modal">
+      <div className="modal-box flex min-h-96 flex-col items-center justify-center gap-3 text-stone-800">
         <h1 className="text-2xl font-semibold">{name}</h1>
         <QRCodeSVG
           value={`${process.env.NEXT_PUBLIC_LINK_URL}/${slug}`}
@@ -18,8 +18,8 @@ export default function DisplayQRCode({ slug, name }: DisplayQRCodeProps) {
           size={250}
           imageSettings={{
             src: `${process.env.NEXT_PUBLIC_ADMIN_URL}/cliki-icon.svg`,
-            height: 80,
-            width: 80,
+            height: 50,
+            width: 50,
             excavate: true,
           }}
         />

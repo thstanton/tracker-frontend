@@ -137,15 +137,20 @@ export async function fetchClicks(): Promise<Click[] | undefined> {
   }
 }
 
-export async function fetchChartData(): Promise<ChartData[] | undefined> {
+export async function fetchChartData(
+  destinationId?: number,
+): Promise<ChartData[] | undefined> {
   try {
-    const response = await fetch(`${process.env.API_URL}/clicks/chart`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${getToken()}`,
+    const response = await fetch(
+      `${process.env.API_URL}/clicks/chart${destinationId ? `/${destinationId}` : ""}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${getToken()}`,
+        },
       },
-    });
+    );
     if (response.ok) {
       return await response.json();
     } else {

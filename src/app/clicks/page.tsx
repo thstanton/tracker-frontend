@@ -26,7 +26,7 @@ export default async function page({ searchParams }: ClickPageProps) {
       clicks={clicks}
       links={links}
       identifiers={identifiers}
-      chartData={chartData}
+      initialChartData={chartData}
     />
   );
 }

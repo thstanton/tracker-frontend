@@ -16,11 +16,27 @@ interface ClickChartProps {
 }
 
 export default function ClickChart({ chartData }: ClickChartProps) {
+  const [filteredData, setFilteredData] = useState<ChartData[]>(
+    chartData?.slice(0, 7) || [],
+  );
+  console.log("Mobile click");
+
   return (
-    // TODO: Fix x-axis labels (cut-off on right), fix y-axis labels (integers only), apply time period filter to table as well as chart
     <div>
-      <ResponsiveContainer width="100%" height={300} className={"mb-3 w-full"}>
-        <LineChart width={500} height={300} data={chartData}>
+      <select
+        className="select select-bordered mb-3 max-w-xs"
+        onChange={(e) =>
+          setFilteredData(chartData?.slice(0, parseInt(e.target.value)) || [])
+        }
+      >
+        <option value="7">7 days</option>
+        <option value="14">14 days</option>
+        <option value="28">28 days</option>
+        <option value="90">90 days</option>
+        <option value="365">365 days</option>
+      </select>
+      <ResponsiveContainer width="100%" height={300} className={"mb-3"}>
+        <LineChart width={500} height={200} data={filteredData}>
           <CartesianGrid vertical={false} />
           <Line type="monotone" dataKey="count" stroke="#8884d8" dot={false} />
           <XAxis
@@ -33,12 +49,10 @@ export default function ClickChart({ chartData }: ClickChartProps) {
               })
             }
             tickMargin={10}
+            interval={"equidistantPreserveStart"}
+            reversed
           />
-          <YAxis
-            className="font-zen text-xs text-stone-500"
-            dataKey="count"
-            allowDecimals={false}
-          />
+          <YAxis className="font-zen text-xs text-stone-500" dataKey="count" />
           <Tooltip
             labelFormatter={(date) =>
               new Date(date).toLocaleDateString("en-GB", {

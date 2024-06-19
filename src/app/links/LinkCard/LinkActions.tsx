@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { IoCopyOutline, IoQrCodeOutline } from "react-icons/io5";
 import DisplayQRCode from "./DisplayQRCode";
+import { copyLink } from "@/lib/utils/copyLink";
 
 interface LinkActionsProps {
   slug: string;
@@ -13,21 +14,17 @@ export default function LinkActions({ slug, name }: LinkActionsProps) {
   const [identifier, setIdentifier] = useState("");
   const [copySuccess, setCopySuccess] = useState(false);
 
-  async function handleCopy() {
-    await navigator.clipboard.writeText(
-      identifier.length
-        ? `${process.env.NEXT_PUBLIC_LINK_URL}/${slug}/?id=${identifier}`
-        : `${process.env.NEXT_PUBLIC_LINK_URL}/${slug}`,
-    );
-    setCopySuccess(true);
-    setTimeout(() => setCopySuccess(false), 2000);
-  }
-
   function handleModal() {
     const modal = document.getElementById(
       `qr-code-modal-${slug}`,
     ) as HTMLDialogElement;
     modal?.showModal();
+  }
+
+  async function handleCopy() {
+    await copyLink(identifier, slug);
+    setCopySuccess(true);
+    setTimeout(() => setCopySuccess(false), 2000);
   }
 
   return (

@@ -21,7 +21,7 @@ export default function LinkCard({ link }: LinkCardProps) {
         </div>
         <p className="text-sm font-semibold">cliki.in/{link.slug}</p>
         <Link href={link.url} className="text-sm">
-          {link.url}
+          {link.url.length > 50 ? link.url.slice(0, 50) + "..." : link.url}
         </Link>
         <Link href="/clicks">
           <p>
